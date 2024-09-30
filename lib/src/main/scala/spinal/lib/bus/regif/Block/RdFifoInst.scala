@@ -8,7 +8,7 @@ class RdFifoInst(name: String, addr: BigInt, doc: String, sec: Secure, grp: GrpT
 
   val bus = Stream(Bits(bi.busDataWidth bit))
 
-  val hitDoRead = rdSecurePassage(bi.writeAddress === U(addr) && bi.doRead)
+  val hitDoRead = rdSecurePassage(bi.readAddress === U(addr) && bi.doRead)
   val hitDoWrite: Bool = False
   hitDoRead.setName(f"read_hit_0x${addr}%04x", weak = true)
 
